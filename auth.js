@@ -11,7 +11,7 @@ passport.use(new passportLocal(async (Username,Password,done)=>{
         if(!User)
             return done(null,false, {message: "Incorrect Username"});
 
-        const isPasswordMatch = User.password === Password ? true : false ;
+        const isPasswordMatch = await User.comparePassword(Password) ;
         if(!isPasswordMatch)
             return done(null,false, {message: "Invalid Password"});
         else

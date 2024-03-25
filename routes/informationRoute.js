@@ -8,7 +8,6 @@ router.post('/', async function (req, res) {
     try {
         const data = req.body; //whatever data user is sending it is collected in req block
 
-
         //Create a new Person document using mongoose model
         const newInfo = new infoRoute(data);
 

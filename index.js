@@ -7,7 +7,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-require('dotenv').config();
+require('dotenv').config(); 
 
 
 // Middleware for authentication
