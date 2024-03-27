@@ -7,5 +7,5 @@
 <p>CRUD Operations</p><br>
 <p>Hosting</p><br>
 <p>Authentication (Using Passport)</p><br>
-
+<p>Sessions, Local Storage and Cookies</p>
 
