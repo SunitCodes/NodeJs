@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('./auth');
 const db = require('./db');
+// const {jsonAuthMiddleware, generateToken} = require('./jwt');
 
 const app = express();
 
@@ -27,9 +28,13 @@ app.use('/person' , personRoutes);
 const infoRoute = require('./routes/informationRoute');
 app.use('/information', LocalAuthMiddleware, infoRoute);
 
+const signUpRoutes = require('./routes/signUpRoute');
+app.use('/login', signUpRoutes);
+
+
+
 const PORT = process.env.PORT || 3000; // Will fetch port number from .env file else will run on port 3000
 
 app.listen(PORT, ()=>{
     console.log(`Server running on PORT ${PORT}`);
 })
-
