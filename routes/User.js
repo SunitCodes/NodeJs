@@ -2,16 +2,21 @@ const express = require('express');
 
 const router = express.Router();
 
-const signUpRoutes = require('./../models/signup');
+const signUpRoutes = require('../models/User');
+const {jsonAuthMiddleware, generateToken} = require('./../jwt');
 
-router.post('/', async function (req, res) {
+router.post('/signup', async function (req, res) {
     try {
         const data = req.body; 
 
         const newUser = new signUpRoutes(data);
-
         const savedData = await newUser.save();
+
+        //generate token
+        const token = generateToken(savedData.username);
+        
         console.log("Data Saved");
+        res.status(200).json({ response: savedData, token: token});
 
     } catch (err) {
         console.log("Error occured");
@@ -20,7 +25,7 @@ router.post('/', async function (req, res) {
 })
 
 
-router.get('/', async (req, res) => {
+router.get('/signup', async (req, res) => {
     try {
         const response = await signUpRoutes.find();
         console.log("Data Fetched");

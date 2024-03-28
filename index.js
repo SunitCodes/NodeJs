@@ -28,8 +28,8 @@ app.use('/person' , personRoutes);
 const infoRoute = require('./routes/informationRoute');
 app.use('/information', LocalAuthMiddleware, infoRoute);
 
-const signUpRoutes = require('./routes/signUpRoute');
-app.use('/login', signUpRoutes);
+const UserRoutes = require('./routes/User');
+app.use('/user', UserRoutes);
 
 
 

@@ -44,7 +44,7 @@ resultSchema.pre('save',async function(next){
         return next();
     
     try{
-        console.log("yess")
+        
         // Hash generation
         const salt = await bcrypt.genSalt(10);
 
